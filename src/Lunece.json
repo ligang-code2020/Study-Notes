@@ -1,0 +1,38 @@
+{
+    "size": 1,
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "term": {
+                        "appid": "wx6025c5470c3cb50c"
+                    }
+                },
+                {
+                    "range": {
+                        "bl_version": {
+                            "gte": "2.11.0"
+                        }
+                    }
+                },
+                {
+                    "range": {
+                        "ts": {
+                            "gte": "2021-02-26T00:00:00.000",
+                            "lte": "2021-02-26T08:00:00.000",
+                            "time_zone": "+08:00"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "aggs": {
+        "uv": {
+            "cardinality": {
+                "field": "guid",
+                "precision_threshold": 12000
+            }
+        }
+    }
+}
