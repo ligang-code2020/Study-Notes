@@ -50,7 +50,9 @@ done
 ---
 
 ### 来看一个实例
+
 这个脚本实现了将字符串转换成数组，然后实现二个数组求差集。
+
 ```bash
 #!/bin/bash
 # “#!” 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行
@@ -109,3 +111,52 @@ MonitorAlarm(){
 }
 MonitorAlarm
 ```
+---
+### 定时发送信息脚本
+
+```bash
+#!/bin/bash
+function send_messages_to_kafka {
+    msg=$(generator_message)
+    echo -e $msg | $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list 172.21.91.206:9092 --topic flink-performance-test
+}
+#--------------------生成随机数--------------------
+function rand {
+    min=$1
+    max=$(($2-$min+1))
+    num=$(date +%s%N)
+    echo $(($num%$max+$min))
+}
+#-------------------------------------------------
+
+function generator_message {
+    #产生1~1000000之间的随机数
+    uid=$(rand 1 1000000);
+    g=$(rand 1 100000);
+    appid=$(rand 1 10000)
+    timestamp=`date '+%s'`;
+    msg={\"fpr\":895,\"rts\":1363,\"ppo\":[[\"subPages/pages/order/index\",0,0,0,[1],1135]],\"rho\":[[\"https://log.aldwx.com/d.html\",368,347,327,[0,0]]],\"key\":\"wx51a67be90ec28ff2\",\"g\":\"$g\",\"l\":\"28.094796,111.373202\",\"u\":\"$uid\",\"s\":\"\","t":$timestamp}
+    echo $msg
+}
+
+generator_message
+
+
+#while true
+#do
+# send_messages_to_kafka
+# sleep 0.1
+#done
+```
+---
+## 一些知识点
+* echo 
+> 1.在Shell脚本语言中，函数返回值可以用return和echo返回，但是return有数值大小的限制，所以我们一般用时<font color="red">echo</font>来返回值。  
+
+* grep
+> grep 命令用于查找文件里符合条件的字符串 
+
+* awk
+>AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。  
+例如：`` `flink list | grep : | awk '{print $4}'` ``  
+打印第二个字段
