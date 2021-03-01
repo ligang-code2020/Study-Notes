@@ -111,7 +111,9 @@ MonitorAlarm(){
 }
 MonitorAlarm
 ```
+
 ---
+
 ### 定时发送信息脚本
 
 ```bash
@@ -148,15 +150,20 @@ generator_message
 # sleep 0.1
 #done
 ```
+
 ---
+
 ## 一些知识点
-* echo 
-> 1.在Shell脚本语言中，函数返回值可以用return和echo返回，但是return有数值大小的限制，所以我们一般用时<font color="red">echo</font>来返回值。  
 
-* grep
-> grep 命令用于查找文件里符合条件的字符串 
+-   echo
 
-* awk
->AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。  
-例如：`` `flink list | grep : | awk '{print $4}'` ``  
-打印第二个字段
+    > 1.在 Shell 脚本语言中，函数返回值可以用 return 和 echo 返回，但是 return 有数值大小的限制，所以我们一般用时<font color="red">echo</font>来返回值。
+
+-   grep
+
+    > grep 命令用于查找文件里符合条件的字符串
+
+-   awk
+    > AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。  
+    > 例如：`` `flink list | grep : | awk '{print $4}'` ``  
+    > 打印第二个字段
