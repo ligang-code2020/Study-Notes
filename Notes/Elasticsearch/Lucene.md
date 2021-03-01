@@ -13,12 +13,12 @@ GET rho_log_nrt_20210225/_search
       "must": [
         {
           "term": {
-            "sub_api_url": "https://mall.xsyxsc.com/user/product/queryShopCar/v3"
+            "sub_api_url": "占位"
           }
         },
         {
           "term": {
-            "appid": "wx6025c5470c3cb50c"
+            "appid": "占位"
           }
         }
       ]
@@ -57,7 +57,7 @@ GET rho_log_nrt_20210226/_search
       "must": [
         {
           "term": {
-            "appid": "wx6025c5470c3cb50c"
+            "appid": "占位"
           }
         },
         {
@@ -105,7 +105,7 @@ GET rho_log_nrt_20210226/_search
             "must": [
                 {
                     "term": {
-                        "appid": "flutter-mobile-f7-0403"
+                        "appid": "占位"
                     }
                 },
                 {
@@ -141,7 +141,7 @@ GET rho_log_nrt_20210226/_search
             "must": [
                 {
                     "term": {
-                        "appid": "flutter-mobile-f7-0403"
+                        "appid": "占位"
                     }
                 },
                 {
