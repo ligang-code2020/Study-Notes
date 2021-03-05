@@ -39,10 +39,30 @@ function getPosts() {
   }, 1000);
 }
 
-
-function createPosts(post, callback) {
-  setTimeout(() => {
-    posts.push(post);
-    callback();
-  }, 2000);
+function createPosts(post) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      posts.push(post);
+      const error = true;
+      if (!error) {
+        resolve();
+      } else {
+        reject("Error:Something went wrong");
+      }
+    }, 2000);
+  });
 }
+
+// createPosts({ title: "Post Three", body: "This is post three" })
+//   .then(getPosts)
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+const promise = fetch(
+  "https://jsonplaceholder.typicode.com/users"
+).then((res) => res.json());
+
+Promise.all([promise]).then((value) => {
+  console.log(value);
+});
