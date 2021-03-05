@@ -210,8 +210,11 @@ GET flink_ops_ppo_20210301/_search
     }
 }
 ```
+
 ---
+
 ## 查询每分钟的UV,PV，接口访问最小，平均，最大耗时
+
 </br>
 
 ```json
@@ -283,5 +286,57 @@ GET flink_ops_ppo_20210301/_search
             }
         }
     }
+}
+```
+
+---
+
+## 查询最近的机型的PV、UV分布(常用指标)
+
+</br>
+
+```json
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "appid": {
+              "value": ""
+            }
+          }
+        },
+        {
+          "range": {
+            "ts": {
+              "gte": "2021-03-04T00:00:00.000+08:00"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "full_typelist": {
+      "terms": {
+        "script": "doc['phone_type'].values +' / '+doc['full_type'].values", //机型和型号拼接起来
+        "size": 120,
+        "order": 
+        {
+          "_count": "desc"  //根据count降序排列
+        }
+      },
+      "aggs": {
+        "uv": {
+          "cardinality": {
+            "field": "guid",
+            "precision_threshold": 12000
+          }
+        }
+      }
+    }
+  }
 }
 ```
