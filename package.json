@@ -1,0 +1,19 @@
+{
+  "name": "study-notes",
+  "version": "1.0.0",
+  "description": "一些学习笔记",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ligang-code2020/Study-Notes.git"
+  },
+  "author": "ligang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ligang-code2020/Study-Notes/issues"
+  },
+  "homepage": "https://github.com/ligang-code2020/Study-Notes#readme"
+}
