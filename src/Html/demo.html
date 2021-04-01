@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="../Js/demo.js"></script>
+
+    <button id="lg">点击</button>
+    <!-- <script src="../Js/demo.js"></script> -->
+
+    <script>
+        var myButton = document.getElementById('lg')
+        console.log(myButton);
+
+       myButton.addEventListener('click',function(){
+           window.location.href="http://go.xsyxsc.com?name=ligang"
+       })
+
+    </script>
 </body>
 </html>
