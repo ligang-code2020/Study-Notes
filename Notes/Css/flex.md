@@ -31,8 +31,11 @@ flex-direction 属性决定主轴的方向（即项目的排列方向）
 #### flex-direction 的属性
 
 > row : 主轴为 x 轴，水平方向，自左向右  
+
 > row-reverse : 主轴为 x 轴，水平方向，自右向左  
+
 > columu : 主轴为 y 轴，垂直方向，自上向下  
+
 > columu-reverse : 主轴为 y 轴，垂直方向，自下向上
 
 </br>
@@ -52,9 +55,13 @@ justify-content 属性定义了项目在主轴上的对齐方式。
 #### justify-content 的属性
 
 > flex-start(默认值)：从头部开始，如果 x 是主轴，方向从左到右  
+
 > flex-end：从尾部开始，方向从右到左  
+
 > center：在主轴居中对齐  
+
 > space-between：先两边贴边 再平分剩余空间
+
 > space-around：平分剩余空间
 
 </br>
@@ -75,7 +82,9 @@ justify-content 属性定义了项目在主轴上的对齐方式。
 #### flex-wrap 的属性
 
 > nowrap(默认值)：不换行  
+
 > wrap：换行，第一行在上方  
+
 > wrap-reverse：换行，第一行在下方
 
 </br>
@@ -92,9 +101,13 @@ justify-content 属性定义了项目在主轴上的对齐方式。
 #### align-items 的属性
 
 > flex-start(默认值)：从上到下   
+
 > flex-end：从下到上   
+
 > center：挤在一起居中(垂直居中)   
-> stretch：拉伸(项目未设置高度或者设为auto，将占满整个容器的高度)   
+
+> stretch：拉伸(项目未设置高度或者设为auto，将占满整个容器的高度)  
+
 > baseline：项目的第一行文字的基线对齐
 
 </br>
@@ -105,7 +118,39 @@ justify-content 属性定义了项目在主轴上的对齐方式。
 
 ### <b>5.align-content</b>
 </br>
-属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+设置子项在侧轴的排列方式并且只适用于多行，单行没有效果
 </br>
+
+---
+<font color="red">项目必须为多行才生效</font>
+
+#### align-content 的属性
+
+> flex-start：从侧轴的头部开始排列   
+
+> flex-end：从侧轴的尾部开始排列   
+
+> center：在侧轴中间显示
+
+> space-around：子项目在侧轴平分剩余空间，所以，轴线之间的间隔比轴线与边框的间隔大一倍。   
+
+> space-between：子项目在侧轴先分布在两头，再平分剩余空间。
+
+> stretch(默认值)：设置子项目元素高度平分父元素高度
+
+</br></br>
+看看效果图
+
+![flex-start](../../flex-start.png)
+
+![flex-end](../../flex-end.png)
+
+![center](../../center.png)
+
+![space-around](../../space-around.png)
+
+![space-between](../../space-between.png)
+
+![stretch](../../stretch.png)
 
 

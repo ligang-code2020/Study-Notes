@@ -10,14 +10,16 @@
             /*水平居中*/
             margin: 0 auto; 
             display: flex;
-            width: 60%;
+            width: 40%;
             height: 500px;
             background-color: black;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
             /* align-items: center; */
             /* justify-content: flex-end; */
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: space-between;
             
         }
         div span {
@@ -25,7 +27,9 @@
             /* flex: 1; */
             height: 100px; 
             background-color: pink;
-            margin: 5px;
+            /* margin-bottom: 5px; */
+            margin-right: 5px;
+            /* margin-bottom: 5px; */
         
         }
     </style>
@@ -36,6 +40,14 @@
         <span>2</span>
         <span>3</span>
         <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
     </div>
   </body>
 </html>
