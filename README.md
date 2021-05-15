@@ -3,7 +3,6 @@
 一些学习笔记
 
 ## Shell
-</br>
 
 ### deleteCheckPoints
 
@@ -25,4 +24,4 @@
 
 ### monitor-flink
 
-用于监控 Flink 程序，目前已经弃用
+用于监控 Flink 程序。
