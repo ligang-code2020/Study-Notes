@@ -478,3 +478,104 @@
   }
 }
 ```
+## 聚合数据(空数据补0)
+```json5
+{
+  "size": 1, 
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "appid": {
+              "value": ""
+            }
+          }
+        },
+        {
+          "range": {
+            "event_time": {
+              "gte": "2021-06-09T00:00:00.000",
+              "lte": "2021-06-09T23:59:59.000",
+              "time_zone": "+08:00"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "parameter": {
+      "nested": {
+        "path": "parameter"  // 定位到parameter对象里
+      },
+      "aggs": {
+        "parameterKey": {
+          "terms": {
+            "field": "parameter.type" // 指定parameter里面的对象
+          },
+          "aggs": {
+            "rev": {
+              "reverse_nested": {}, // 跳出parameter的结构，回到和parameter的同级结构
+              "aggs": {
+                "uv": {
+                  "cardinality": {
+                    "field": "guid",
+                    "precision_threshold": 12000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+```
+小知识点：
+1.keyword字段如果要进行模糊查询，只能借助wildcard
+```json5
+{
+  "size": 20,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "wildcard": {
+            "name": {
+              "value": "*昊途*"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {
+      "updatetime": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+```
+2.text字段进行模糊查询，使用match进行查询
+```json5
+{
+  "size": 20, 
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "creater": "贺"
+          }
+        }
+      ]
+    }
+  }
+}
+```
