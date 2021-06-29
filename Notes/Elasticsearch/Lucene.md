@@ -478,7 +478,7 @@
   }
 }
 ```
-## 聚合数据(空数据补0)
+## Es对深层次数据结构的聚合
 ```json5
 {
   "size": 1, 
@@ -578,4 +578,66 @@
     }
   }
 }
+```
+## ES对聚合后的数据进行排序
+```json5
+{
+  "size": 0, 
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "appid": {
+              "value": ""
+            }
+          }
+        },
+        {
+          "range": {
+            "ts": {
+              "gte": "2021-06-01",
+              "lte": "2021-06-02"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "ts":{
+      "terms": {
+        "field": "ts",
+        "size": 30,
+        "order": {
+          "_term": "desc"
+        }
+      },
+      "aggs": {
+        "aa": {
+          "terms": {
+            "field": "app_version"
+          },
+          "aggs": {
+            "uv": {
+              "sum": {
+                "field": "uv"
+              }
+            },
+            "sort":{  // 对聚合的uv进行排序  参考链接：https://www.cnblogs.com/chenmz1995/p/11265470.html
+              "bucket_sort": {
+                "sort": {
+                  "uv":{
+                    "order":"desc"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 ```
